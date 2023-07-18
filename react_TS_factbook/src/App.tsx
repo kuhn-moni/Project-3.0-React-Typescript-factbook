@@ -1,4 +1,15 @@
 import React, { useEffect, useState } from "react";
+import {
+  createBrowserRouter,
+  createRoutesFromElements,
+  Link,
+  NavLink,
+  Outlet,
+  Route,
+  RouterProvider,
+} from "react-router-dom";
+import About from "./views/About";
+import Home from "./views/Home";
 
 function FetchApi() {
   type Country = {
@@ -10,6 +21,15 @@ function FetchApi() {
       };
     };
   };
+
+  const router = createBrowserRouter(
+    createRoutesFromElements(
+      <Route path="/" element={<Root />}>
+        <Route index element={<Home />} />
+        <Route path="/about" element={<About />} />
+      </Route>
+    )
+  );
 
   const [countryInfo, setcountryInfo] = useState([]);
   const urlsArray = [
@@ -27,26 +47,22 @@ function FetchApi() {
     "https://raw.githubusercontent.com/factbook/factbook.json/master/east-n-southeast-asia/my.json",
   ];
 
-  useEffect(() => {
-    const arrayReponse = urlsArray.map(async (url) => {
-      try {
-        const response = await fetch(url);
-        const result = await response.json();
-        return result;
-      } catch (error) {
-        console.error("Failed to fetch data", error);
-        return null;
-      }
-    });
-    const allResults = Promise.all(arrayReponse).then((results) => {
-      console.log("THIS BE THE RESULTS ", results);
+  const fetchAllUrls = async () => {
+    try {
+      const responses = await Promise.all(urlsArray.map((url) => fetch(url)));
+      console.log("responses :>> ", responses);
+      // const results = await Promise.all(responses.map((res) => res.json()))
+
+      const results = await Promise.all(responses.map((res) => res.json()));
       setcountryInfo(results);
-      return results;
-    });
-  }, []);
+    } catch (error) {
+      console.log("error :>> ", error);
+    }
+  };
 
   return (
-    <div>
+    <>
+      <RouterProvider router={router} />
       <h1>Countries</h1>
       {countryInfo &&
         countryInfo.map((result, index) => {
@@ -61,8 +77,19 @@ function FetchApi() {
             </p>
           );
         })}
-    </div>
+    </>
   );
 }
+
+const Root = () => {
+  return (
+    <>
+      <div>This is gonna be present in all our App</div>
+      <div>
+        <Outlet />
+      </div>
+    </>
+  );
+};
 
 export default FetchApi;
