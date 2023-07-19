@@ -51,12 +51,34 @@ const Main = () => {
                 }
               </h2>
               <p>
+                Nationality -{" "}
                 {country?.["People and Society"]?.Nationality.adjective.text}
               </p>
-              <p>{country.Geography.Location.text}</p>
-              <p>{country?.["People and Society"]?.Population.text} </p>
               <p>
-                {country?.["People and Society"]?.Nationality.adjective.text}
+                Population - {country?.["People and Society"]?.Population.text}{" "}
+              </p>
+              <p>Location - {country.Geography.Location.text}</p>
+              <p>
+                Economic overview -{" "}
+                {country?.Economy["Economic overview"]?.text}
+              </p>
+              <p>
+                Real GDP Growth Rate -
+                {
+                  country?.Economy["Real GDP growth rate"]?.[
+                    "Real GDP growth rate 2019"
+                  ]?.text
+                }
+                {
+                  country?.Economy["Real GDP growth rate"]?.[
+                    "Real GDP growth rate 2020"
+                  ]?.text
+                }
+                {
+                  country?.Economy["Real GDP growth rate"]?.[
+                    "Real GDP growth rate 2021"
+                  ]?.text
+                }
               </p>
             </div>
           );
