@@ -10,7 +10,7 @@ const Main = () => {
     "https://raw.githubusercontent.com/factbook/factbook.json/master/east-n-southeast-asia/tw.json",
     "https://raw.githubusercontent.com/factbook/factbook.json/master/east-n-southeast-asia/ch.json",
     "https://raw.githubusercontent.com/factbook/factbook.json/master/east-n-southeast-asia/cb.json",
-    "https://raw.githubusercontent.com/factbook/factbook.json/master/east-n-southeast-asia/th.json",
+    "https://raw.githubusercontent.com/factbook/factbook.json/master/east-n-southeast-asia/bx.json",
     "https://raw.githubusercontent.com/factbook/factbook.json/master/east-n-southeast-asia/vm.json",
     "https://raw.githubusercontent.com/factbook/factbook.json/master/east-n-southeast-asia/rp.json",
     "https://raw.githubusercontent.com/factbook/factbook.json/master/east-n-southeast-asia/id.json",
@@ -77,6 +77,80 @@ const Main = () => {
                 {
                   country?.Economy["Real GDP growth rate"]?.[
                     "Real GDP growth rate 2021"
+                  ]?.text
+                }
+              </p>
+              <p>
+                Real GDP per capita -
+                {
+                  country?.Economy["Real GDP per capita"]?.[
+                    "Real GDP per capita 2021"
+                  ]?.text
+                }
+              </p>
+              <p>Industries - {country?.Economy.Industries.text}</p>
+
+              <p>
+                Export - {country?.Economy.Exports["Exports 2021"]?.text}
+                <br />
+                Export Commodities -{" "}
+                {country?.Economy["Exports - commodities"]?.text}
+                <br />
+                Export Partners - {country?.Economy["Exports - partners"]?.text}
+              </p>
+              <p>
+                Imports - {country?.Economy.Imports["Imports 2021"]?.text}
+                <br />
+                Import Commodities -{" "}
+                {country?.Economy["Imports - commodities"]?.text}
+                <br />
+                Import Partners - {country?.Economy["Imports - partners"]?.text}
+              </p>
+              <p>
+                Military expenditure -{" "}
+                {
+                  country?.["Military and Security"]?.[
+                    "Military expenditures"
+                  ]?.["Military Expenditures 2018"]?.text
+                }
+                {
+                  country?.["Military and Security"]?.[
+                    "Military expenditures"
+                  ]?.["Military Expenditures 2019"]?.text
+                }
+                {
+                  country?.["Military and Security"]?.[
+                    "Military expenditures"
+                  ]?.["Military Expenditures 2020"]?.text
+                }
+                {
+                  country?.["Military and Security"]?.[
+                    "Military expenditures"
+                  ]?.["Military Expenditures 2021"]?.text
+                }
+                {
+                  country?.["Military and Security"]?.[
+                    "Military expenditures"
+                  ]?.["Military Expenditures 2022"]?.text
+                }
+              </p>
+              <p>
+                Military inventories and acqusition -{" "}
+                {
+                  country?.["Military and Security"]?.[
+                    "Military equipment inventories and acquisitions"
+                  ]?.text
+                }
+              </p>
+              {/* <p>
+                Note -{" "}
+                {country?.["Military and Security"]?.["Military - note"]?.text}     //!not all relevant info, in big paragraph
+              </p> */}
+              <p>
+                Transnational disputes -{" "}
+                {
+                  country?.["Transnational Issues"]?.[
+                    "Disputes - international"
                   ]?.text
                 }
               </p>
