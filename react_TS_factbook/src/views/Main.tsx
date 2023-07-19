@@ -1,26 +1,8 @@
-import React, { useEffect, useState } from "react";
-
-export interface CountryInfoType {
-  Communications: {
-    ["Broadband - fixed subscriptions"]: {
-      ["subscriptions per 100 inhabitants"]: {
-        text: string;
-      };
-    };
-  };
-}
-type Country = {
-  Government: {
-    ["Country name"]: {
-      ["conventional short form"]: {
-        text: string;
-      };
-    };
-  };
-};
+import { useEffect, useState } from "react";
+import { CountryResponse } from "../types/countryInfoTypes";
 
 const Main = () => {
-  const [countriesInfo, setcountriesInfo] = useState<CountryInfoType[]>([]);
+  const [countriesInfo, setcountriesInfo] = useState<CountryResponse[]>([]);
   const urlsArray = [
     "https://raw.githubusercontent.com/factbook/factbook.json/master/east-n-southeast-asia/ja.json",
     "https://raw.githubusercontent.com/factbook/factbook.json/master/east-n-southeast-asia/kn.json",
@@ -39,9 +21,7 @@ const Main = () => {
   const fetchAllUrls = async () => {
     try {
       const responses = await Promise.all(urlsArray.map((url) => fetch(url)));
-      console.log("responses :>> ", responses);
       // const results = await Promise.all(responses.map((res) => res.json()))
-
       const results = await Promise.all(responses.map((res) => res.json()));
       console.log("results :>> ", results);
       setcountriesInfo(results);
@@ -60,16 +40,22 @@ const Main = () => {
     <div>
       <h1>Countries</h1>
       {countriesInfo &&
-        countriesInfo.map((result, index) => {
-          console.log("result to JSX :>> ", result);
+        countriesInfo.map((country, index) => {
           return (
-            <p key={index}>
-              {
-                result?.Government?.["Country name"]?.[
-                  "conventional short form"
-                ].text
-              }
-            </p>
+            <div key={index}>
+              <h2>
+                {
+                  country.Government?.["Country name"]?.[
+                    "conventional short form"
+                  ].text
+                }
+              </h2>
+              <p>
+                {country?.["People and Society"]?.Nationality.adjective.text}
+              </p>
+              <p>{country.Geography.Location.text}</p>
+              <p> {country?.["People and Society"]?.Population.text} </p>
+            </div>
           );
         })}
     </div>
