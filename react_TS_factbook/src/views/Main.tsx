@@ -54,7 +54,10 @@ const Main = () => {
                 {country?.["People and Society"]?.Nationality.adjective.text}
               </p>
               <p>{country.Geography.Location.text}</p>
-              <p> {country?.["People and Society"]?.Population.text} </p>
+              <p>{country?.["People and Society"]?.Population.text} </p>
+              <p>
+                {country?.["People and Society"]?.Nationality.adjective.text}
+              </p>
             </div>
           );
         })}
