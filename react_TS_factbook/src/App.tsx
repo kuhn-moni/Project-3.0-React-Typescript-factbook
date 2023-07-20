@@ -16,11 +16,12 @@ import NoMatch from "./views/NoMatch";
 function App() {
   const router = createBrowserRouter(
     createRoutesFromElements(
-      <Route path="/" element={<Root />}>
+      <Route path="/" element={<Root />} errorElement={<NoMatch />}>
         <Route index element={<Home />} />
         <Route path="/about" element={<About />} />
         <Route path="/main" element={<Main />} />
-        <Route path="*" element={<NoMatch />} />
+        {/* <Route path="*" element={<NoMatch />} /> */} //*can use this instead
+        of errorElement nested in Root above on l19
       </Route>
     )
   );
