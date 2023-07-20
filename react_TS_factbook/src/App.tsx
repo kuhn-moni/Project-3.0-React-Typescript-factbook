@@ -18,7 +18,7 @@ function App() {
       <Route path="/" element={<Root />}>
         <Route index element={<Home />} />
         <Route path="/about" element={<About />} />
-        <Route path="main" element={<Main />} />
+        <Route path="/main" element={<Main />} />
       </Route>
     )
   );
@@ -33,7 +33,11 @@ function App() {
 const Root = () => {
   return (
     <>
-      <div>This is gonna be present in all our App</div>
+      <nav>
+        <Link to="/">Home</Link> | <Link to="/main">Main</Link> |{" "}
+        <Link to="/about">About</Link>
+      </nav>
+
       <div>
         <Outlet />
       </div>
