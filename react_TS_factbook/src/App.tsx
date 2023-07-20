@@ -11,6 +11,7 @@ import {
 import About from "./views/About";
 import Home from "./views/Home";
 import Main from "./views/Main";
+import NoMatch from "./views/NoMatch";
 
 function App() {
   const router = createBrowserRouter(
@@ -19,6 +20,7 @@ function App() {
         <Route index element={<Home />} />
         <Route path="/about" element={<About />} />
         <Route path="/main" element={<Main />} />
+        <Route path="*" element={<NoMatch />} />
       </Route>
     )
   );
