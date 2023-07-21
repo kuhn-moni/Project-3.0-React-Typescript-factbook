@@ -13,6 +13,7 @@ import Home from "./views/Home";
 import Main from "./views/Main";
 import NoMatch from "./views/NoMatch";
 import { AuthContextProvider } from "./contexts/AuthContext";
+import Details from "./views/Details";
 
 function App() {
   const router = createBrowserRouter(
@@ -21,8 +22,7 @@ function App() {
         <Route index element={<Home />} />
         <Route path="/about" element={<About />} />
         <Route path="/main" element={<Main />} />
-        {/* <Route path="*" element={<NoMatch />} /> */} //*can use this instead
-        //*of errorElement nested in Root above on l19
+        <Route path="main/:name" element={<Details />} />
       </Route>
     )
   );
