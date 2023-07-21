@@ -12,6 +12,7 @@ import About from "./views/About";
 import Home from "./views/Home";
 import Main from "./views/Main";
 import NoMatch from "./views/NoMatch";
+import { AuthContextProvider } from "./contexts/AuthContext";
 
 function App() {
   const router = createBrowserRouter(
@@ -28,7 +29,9 @@ function App() {
 
   return (
     <>
-      <RouterProvider router={router} />
+      <AuthContextProvider>
+        <RouterProvider router={router} />
+      </AuthContextProvider>
     </>
   );
 }

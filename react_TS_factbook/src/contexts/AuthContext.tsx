@@ -1,4 +1,4 @@
-import { createContext } from "react";
+import { createContext, useState } from "react";
 import { User } from "../types/countryInfoTypes";
 
 interface ContextType {
@@ -10,3 +10,17 @@ const defaultValue: ContextType = {
 };
 
 export const AuthContext = createContext(defaultValue);
+
+interface Props {
+  children: React.ReactNode;
+}
+
+export const AuthContextProvider = (props: Props) => {
+  const [user, setUser] = useState(false);
+
+  return (
+    <AuthContext.Provider value={{ user }}>
+      {props.children}
+    </AuthContext.Provider>
+  );
+};
