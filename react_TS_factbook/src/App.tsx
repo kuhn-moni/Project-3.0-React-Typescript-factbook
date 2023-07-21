@@ -21,7 +21,7 @@ function App() {
         <Route path="/about" element={<About />} />
         <Route path="/main" element={<Main />} />
         {/* <Route path="*" element={<NoMatch />} /> */} //*can use this instead
-        of errorElement nested in Root above on l19
+        //*of errorElement nested in Root above on l19
       </Route>
     )
   );

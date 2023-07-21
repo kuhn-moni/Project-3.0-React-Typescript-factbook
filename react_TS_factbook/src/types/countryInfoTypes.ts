@@ -1,3 +1,5 @@
+export type User = boolean;
+
 export interface CountryResponse {
   Introduction: Introduction;
   Geography: Geography;
