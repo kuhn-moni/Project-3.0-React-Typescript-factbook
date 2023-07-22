@@ -37,13 +37,17 @@ function App() {
 }
 
 const Root = () => {
-  const { user } = useContext(AuthContext);
+  const { user, login, logout } = useContext(AuthContext);
   return (
     <>
       <nav>
         <Link to="/">Home</Link> | <Link to="/main">Main</Link> |{" "}
-        <Link to="/about">About</Link>
-        {user ? <p>User is logged in</p> : <p>User is logged out</p>}
+        <Link to="/about">About</Link> |{" "}
+        {user ? (
+          <button onClick={logout}>Logout</button>
+        ) : (
+          <button onClick={login}>Login</button>
+        )}
       </nav>
 
       <div>
