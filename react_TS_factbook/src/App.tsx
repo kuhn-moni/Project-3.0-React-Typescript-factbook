@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import {
   createBrowserRouter,
   createRoutesFromElements,
@@ -12,7 +12,7 @@ import About from "./views/About";
 import Home from "./views/Home";
 import Main from "./views/Main";
 import NoMatch from "./views/NoMatch";
-import { AuthContextProvider } from "./contexts/AuthContext";
+import { AuthContext, AuthContextProvider } from "./contexts/AuthContext";
 import Details from "./views/Details";
 
 function App() {
@@ -37,11 +37,13 @@ function App() {
 }
 
 const Root = () => {
+  const { user } = useContext(AuthContext);
   return (
     <>
       <nav>
         <Link to="/">Home</Link> | <Link to="/main">Main</Link> |{" "}
         <Link to="/about">About</Link>
+        {user ? <p>User is logged in</p> : <p>User is logged out</p>}
       </nav>
 
       <div>
