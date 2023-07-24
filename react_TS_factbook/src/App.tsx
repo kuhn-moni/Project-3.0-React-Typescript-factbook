@@ -20,16 +20,17 @@ function App() {
   const router = createBrowserRouter(
     createRoutesFromElements(
       <Route path="/" element={<Root />} errorElement={<NoMatch />}>
-        <Route index element={<Home />} />
-        <Route path="/about" element={<About />} />
         <Route
-          path="/main"
           element={
             <ProtectedLayout>
-              <Main />
+              <Outlet />
             </ProtectedLayout>
           }
-        />
+        >
+          <Route path="/main" element={<Main />} />
+        </Route>
+        <Route index element={<Home />} />
+        <Route path="/about" element={<About />} />
         <Route path="main/:name" element={<Details />} />
       </Route>
     )
