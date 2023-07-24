@@ -14,6 +14,7 @@ import Main from "./views/Main";
 import NoMatch from "./views/NoMatch";
 import { AuthContext, AuthContextProvider } from "./contexts/AuthContext";
 import Details from "./views/Details";
+import ProtectedLayout from "./views/ProtectedLayout";
 
 function App() {
   const router = createBrowserRouter(
@@ -21,7 +22,14 @@ function App() {
       <Route path="/" element={<Root />} errorElement={<NoMatch />}>
         <Route index element={<Home />} />
         <Route path="/about" element={<About />} />
-        <Route path="/main" element={<Main />} />
+        <Route
+          path="/main"
+          element={
+            <ProtectedLayout>
+              <Main />
+            </ProtectedLayout>
+          }
+        />
         <Route path="main/:name" element={<Details />} />
       </Route>
     )
