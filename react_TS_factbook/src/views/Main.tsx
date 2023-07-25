@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { ChangeEvent, useEffect, useState } from "react";
 import { CountryResponse } from "../types/countryInfoTypes";
 
 const Main = () => {
@@ -30,6 +30,12 @@ const Main = () => {
     }
   };
 
+  const [searchText, setsearchText] = useState("");
+
+  const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => {
+    setsearchText(e.target.value);
+  };
+
   useEffect(() => {
     fetchAllUrls().catch((error) => {
       console.log("error :>> ", error);
@@ -38,6 +44,8 @@ const Main = () => {
 
   return (
     <>
+      <input type="text" onChange={handleInputChange} />
+
       <div className="container-fluid">
         <div className="row justify-content-center">
           <h1>Countries</h1>
@@ -61,11 +69,13 @@ const Main = () => {
                     <img src={""} alt={""} className="photo w-75" />
                   </div>
                   <div className="card-body">
-                    Nationality -{" "}
-                    {
-                      country?.["People and Society"]?.Nationality.adjective
-                        .text
-                    }
+                    <p>
+                      Nationality -{" "}
+                      {
+                        country?.["People and Society"]?.Nationality.adjective
+                          .text
+                      }
+                    </p>
                     <p>
                       Population -{" "}
                       {country?.["People and Society"]?.Population.text}{" "}
