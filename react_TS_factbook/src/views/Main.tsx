@@ -1,7 +1,5 @@
 import { ChangeEvent, useEffect, useState } from "react";
 import { CountryResponse } from "../types/countryInfoTypes";
-import CountryCards from "../components/CountryCard";
-import CountryCard from "../components/CountryCard";
 import CardsGrid from "../components/CardsGrid";
 import { Container, Row } from "react-bootstrap";
 

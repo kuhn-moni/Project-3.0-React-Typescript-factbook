@@ -1,6 +1,5 @@
-import React, { useState } from "react";
 import { CountryResponse } from "../types/countryInfoTypes";
-import { Card, CardImg } from "react-bootstrap";
+import { Card } from "react-bootstrap";
 
 interface CountryCardProps {
   country: CountryResponse;
@@ -62,11 +61,8 @@ function CountryCard({ country }: CountryCardProps) {
             </p>
             <p>Industries - {country?.Economy.Industries.text}</p>
             <p>
-              Export - {country?.Economy.Exports["Exports 2021"]?.text}
-              <br />
-              Export Commodities -
-              {country?.Economy["Exports - commodities"]?.text}
-              <br />
+              Export - {country?.Economy.Exports["Exports 2021"]?.text} Export
+              Commodities -{country?.Economy["Exports - commodities"]?.text}{" "}
               Export Partners - {country?.Economy["Exports - partners"]?.text}
             </p>
             <p>

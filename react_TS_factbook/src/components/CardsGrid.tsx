@@ -1,7 +1,4 @@
-import React from "react";
-
 import CountryCard from "./CountryCard";
-import { Col } from "react-bootstrap";
 import { CountryResponse } from "../types/countryInfoTypes";
 
 interface CardsGridProps {
