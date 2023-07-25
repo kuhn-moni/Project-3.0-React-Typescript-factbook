@@ -13,6 +13,7 @@ export interface CountryResponse {
 
 export interface Introduction {
   Background: Background;
+  Img?: string; //!for embedding flag images into countries
 }
 
 export interface Background {

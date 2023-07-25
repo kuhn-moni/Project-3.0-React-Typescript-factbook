@@ -8,7 +8,15 @@ type Props = {
 function ProtectedLayout({ children }: Props) {
   const { user } = useContext(AuthContext);
 
-  return <>{user ? children : <div>Restricted Content</div>}</>;
+  return (
+    <>
+      {user ? (
+        children
+      ) : (
+        <div>Restricted Content - Please login to view content</div>
+      )}
+    </>
+  );
 }
 
 export default ProtectedLayout;
