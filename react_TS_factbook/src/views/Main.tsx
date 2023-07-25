@@ -2,6 +2,8 @@ import { ChangeEvent, useEffect, useState } from "react";
 import { CountryResponse } from "../types/countryInfoTypes";
 import CountryCards from "../components/CountryCard";
 import CountryCard from "../components/CountryCard";
+import CardsGrid from "../components/CardsGrid";
+import { Container, Row } from "react-bootstrap";
 
 const Main = () => {
   const [countriesInfo, setcountriesInfo] = useState<CountryResponse[]>([]);
@@ -58,10 +60,11 @@ const Main = () => {
       <div className="container-fluid">
         <div className="row justify-content-center">
           <h1>Countries</h1>
-          {countriesInfo &&
-            countriesInfo.map((country, idx) => {
-              return <CountryCard country={country} key={idx} />;
-            })}
+          <Container>
+            <Row xs={1} sm={2} md={2} lg={4}>
+              <CardsGrid countriesInfo={filteredCountries} />
+            </Row>
+          </Container>
         </div>
       </div>
     </>
