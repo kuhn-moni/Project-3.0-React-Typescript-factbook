@@ -58,8 +58,11 @@ const Main = () => {
       <div className="container-fluid">
         <div className="row justify-content-center">
           <h1>Countries</h1>
-
-          <CardsGrid countriesInfo={filteredCountries} />
+          <Container>
+            <Row xs={1} sm={2} md={2} lg={4}>
+              <CardsGrid countriesInfo={filteredCountries} />
+            </Row>
+          </Container>
         </div>
       </div>
     </>
