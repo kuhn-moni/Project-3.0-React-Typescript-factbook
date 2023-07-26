@@ -13,7 +13,7 @@ function CountryCard({ country }: CountryCardProps) {
 
   return (
     <>
-      <Card style={{ width: "18rem" }}>
+      <Card style={{ width: "30vw", margin: "10px" }}>
         <Card.Body>
           <Card.Title>
             {
@@ -22,18 +22,18 @@ function CountryCard({ country }: CountryCardProps) {
             }
           </Card.Title>
           <Card.Text>
-            <p>
+            <span>
               Nationality -{" "}
               {country?.["People and Society"]?.Nationality.adjective.text}
-            </p>
-            <p>
+            </span>
+            <span>
               Population - {country?.["People and Society"]?.Population.text}{" "}
-            </p>
-            <p>Location - {country.Geography.Location.text}</p>
-            <p>
+            </span>
+            <span>Location - {country.Geography.Location.text}</span>
+            <span>
               Economic overview - {country?.Economy["Economic overview"]?.text}
-            </p>
-            <p>
+            </span>
+            <span>
               Real GDP Growth Rate -
               {
                 country?.Economy["Real GDP growth rate"]?.[
@@ -50,31 +50,31 @@ function CountryCard({ country }: CountryCardProps) {
                   "Real GDP growth rate 2021"
                 ]?.text
               }
-            </p>
-            <p>
+            </span>
+            <span>
               Real GDP per capita -
               {
                 country?.Economy["Real GDP per capita"]?.[
                   "Real GDP per capita 2021"
                 ]?.text
               }
-            </p>
-            <p>Industries - {country?.Economy.Industries.text}</p>
-            <p>
+            </span>
+            <span>Industries - {country?.Economy.Industries.text}</span>
+            <span>
               Export - {country?.Economy.Exports["Exports 2021"]?.text} Export
               Commodities -{country?.Economy["Exports - commodities"]?.text}{" "}
               Export Partners - {country?.Economy["Exports - partners"]?.text}
-            </p>
-            <p>
+            </span>
+            <span>
               Imports - {country?.Economy.Imports["Imports 2021"]?.text}
               <br />
               Import Commodities -
               {country?.Economy["Imports - commodities"]?.text}
               <br />
               Import Partners - {country?.Economy["Imports - partners"]?.text}
-            </p>
-            <p>
-              Military expenditure -{" "}
+            </span>
+            <span>
+              Military expenditure -
               {
                 country?.["Military and Security"]?.["Military expenditures"]?.[
                   "Military Expenditures 2018"
@@ -100,22 +100,22 @@ function CountryCard({ country }: CountryCardProps) {
                   "Military Expenditures 2022"
                 ]?.text
               }
-            </p>
-            <p>
+            </span>
+            <span>
               Military inventories and acqusition -
               {
                 country?.["Military and Security"]?.[
                   "Military equipment inventories and acquisitions"
                 ]?.text
               }
-            </p>
-            <p>
+            </span>
+            <span>
               Transnational disputes -
               {
                 country?.["Transnational Issues"]?.["Disputes - international"]
                   ?.text
               }
-            </p>
+            </span>
           </Card.Text>
         </Card.Body>
       </Card>

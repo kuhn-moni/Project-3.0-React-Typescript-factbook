@@ -7,12 +7,20 @@ interface CardsGridProps {
 
 function CardsGrid({ countriesInfo }: CardsGridProps) {
   return (
-    <>
+    <div
+      style={{
+        display: "flex",
+        justifyContent: "center",
+        flexWrap: "wrap",
+        flexDirection: "row",
+        width: "100vw",
+      }}
+    >
       {countriesInfo &&
         countriesInfo.map((country, idx) => {
           return <CountryCard country={country} key={idx} />;
         })}
-    </>
+    </div>
   );
 }
 
