@@ -15,6 +15,7 @@ import NoMatch from "./views/NoMatch";
 import { AuthContext, AuthContextProvider } from "./contexts/AuthContext";
 import Details from "./views/Details";
 import ProtectedLayout from "./views/ProtectedLayout";
+import Login from "./views/Login";
 
 function App() {
   const router = createBrowserRouter(
@@ -30,6 +31,7 @@ function App() {
           <Route path="/main" element={<Main />} />
         </Route>
         <Route index element={<Home />} />
+        <Route path-="login" element={<Login />} />
         <Route path="/about" element={<About />} />
         <Route path="main/:name" element={<Details />} />
       </Route>
@@ -55,7 +57,7 @@ const Root = () => {
         {user ? (
           <button onClick={logout}>Logout</button>
         ) : (
-          <button onClick={login}>Login</button>
+          <Link to={"/login"}>Login</Link>
         )}
       </nav>
 
