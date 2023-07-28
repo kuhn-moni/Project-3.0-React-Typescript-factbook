@@ -17,7 +17,7 @@ const NoMatch = () => {
   console.log("error :>> ", error);
   return (
     <div>
-      <h1>nuffin to see here mate..</h1>
+      <h1>Nothing to see here...</h1>
       <h3>
         {error.status} {error.statusText}
       </h3>

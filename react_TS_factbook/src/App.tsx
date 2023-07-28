@@ -28,11 +28,11 @@ function App() {
             </ProtectedLayout>
           }
         >
-          <Route path="/main" element={<Main />} />
+          <Route path="main" element={<Main />} />
         </Route>
         <Route index element={<Home />} />
-        <Route path-="login" element={<Login />} />
-        <Route path="/about" element={<About />} />
+        <Route path="login" element={<Login />} />
+        <Route path="about" element={<About />} />
         <Route path="main/:name" element={<Details />} />
       </Route>
     )
@@ -57,7 +57,7 @@ const Root = () => {
         {user ? (
           <button onClick={logout}>Logout</button>
         ) : (
-          <Link to={"/login"}>Login</Link>
+          <Link to={"login"}>Login</Link>
         )}
       </nav>
 

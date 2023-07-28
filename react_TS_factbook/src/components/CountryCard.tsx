@@ -6,11 +6,6 @@ interface CountryCardProps {
 }
 
 function CountryCard({ country }: CountryCardProps) {
-  //   const [show, setshow] = useState(false);
-
-  //   const handleClose = () => setshow(false);
-  //   const handleShow = () => setshow(true);
-
   return (
     <>
       <Card style={{ width: "30vw", margin: "10px" }}>
