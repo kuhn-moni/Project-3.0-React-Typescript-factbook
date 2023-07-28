@@ -1,12 +1,17 @@
+import AuthForm from "../components/AuthForm";
+
 const Login = () => {
   return (
     <div>
-      <h1>Login</h1>
-
-      <form></form>
+      <AuthForm
+        title={"Login"}
+        handleSubmit={() => console.log("logging in")}
+      />
       <hr />
-      <h1>Register</h1>
-      <form></form>
+      <AuthForm
+        title={"Register"}
+        handleSubmit={() => console.log("Register new user")}
+      />
     </div>
   );
 };

@@ -1,8 +1,12 @@
-import { useState } from "react";
+import { type FormEvent, useState } from "react";
 
 type Props = {
   title: string;
-  handleSubmit: () => void;
+  handleSubmit: (
+    e: FormEvent<HTMLFormElement>,
+    email: string,
+    password: string
+  ) => void;
 };
 
 const AuthForm = ({ title, handleSubmit }: Props) => {
@@ -12,7 +16,10 @@ const AuthForm = ({ title, handleSubmit }: Props) => {
     <div>
       <h1>{title}</h1>
 
-      <form onSubmit={handleSubmit}>
+      <form
+        onSubmit={(e) => handleSubmit(e, email, password)}
+        style={{ display: "flex", flexDirection: "column", gap: "1em" }}
+      >
         <input
           type="email"
           value={email}
@@ -23,6 +30,7 @@ const AuthForm = ({ title, handleSubmit }: Props) => {
           value={password}
           onChange={(e) => setPassword(e.target.value)}
         />
+        <button type="submit">{title}</button>
       </form>
     </div>
   );
