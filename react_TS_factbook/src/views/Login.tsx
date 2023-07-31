@@ -1,17 +1,21 @@
 import AuthForm from "../components/AuthForm";
 
 const Login = () => {
+  const handleLoginSubmit = (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    console.log("logged in");
+  };
+
+  const handleRegisterSubmit = (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    console.log("Register new user");
+  };
+
   return (
     <div>
-      <AuthForm
-        title={"Login"}
-        handleSubmit={() => console.log("logging in")}
-      />
+      <AuthForm title={"Login"} handleSubmit={handleLoginSubmit} />
       <hr />
-      <AuthForm
-        title={"Register"}
-        handleSubmit={() => console.log("Register new user")}
-      />
+      <AuthForm title={"Register"} handleSubmit={handleRegisterSubmit} />
     </div>
   );
 };

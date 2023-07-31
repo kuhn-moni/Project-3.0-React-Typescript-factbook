@@ -69,7 +69,3 @@ const Root = () => {
 };
 
 export default App;
-
-// think about which data to display
-// merge flag assests into the relevant countries
-//
