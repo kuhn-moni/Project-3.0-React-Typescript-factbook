@@ -1,4 +1,5 @@
 import AuthForm from "../components/AuthForm";
+import { type FormEvent } from "react";
 
 const Login = () => {
   const handleLoginSubmit = (e: FormEvent<HTMLFormElement>) => {

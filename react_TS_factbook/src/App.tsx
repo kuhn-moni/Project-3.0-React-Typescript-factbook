@@ -1,9 +1,8 @@
-import React, { useContext, useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import {
   createBrowserRouter,
   createRoutesFromElements,
   Link,
-  NavLink,
   Outlet,
   Route,
   RouterProvider,
