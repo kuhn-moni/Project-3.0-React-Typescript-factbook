@@ -1,15 +1,16 @@
 import AuthForm from "../components/AuthForm";
-import { type FormEvent } from "react";
+import { useContext, type FormEvent } from "react";
+import { AuthContext } from "../contexts/AuthContext";
 
 const Login = () => {
-  const handleLoginSubmit = (e: FormEvent<HTMLFormElement>) => {
+  const { handleRegisterSubmit } = useContext(AuthContext);
+  const handleLoginSubmit = (
+    e: FormEvent<HTMLFormElement>,
+    email: string,
+    password: string
+  ) => {
     e.preventDefault();
     console.log("logged in");
-  };
-
-  const handleRegisterSubmit = (e: FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    console.log("Register new user");
   };
 
   return (
