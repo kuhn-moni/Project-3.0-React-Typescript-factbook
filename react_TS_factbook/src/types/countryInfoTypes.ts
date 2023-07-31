@@ -1,4 +1,4 @@
-export type User = boolean;
+// export type User = boolean;
 
 export interface CountryResponse {
   Introduction: Introduction;

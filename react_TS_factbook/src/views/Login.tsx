@@ -3,15 +3,7 @@ import { useContext, type FormEvent } from "react";
 import { AuthContext } from "../contexts/AuthContext";
 
 const Login = () => {
-  const { handleRegisterSubmit } = useContext(AuthContext);
-  const handleLoginSubmit = (
-    e: FormEvent<HTMLFormElement>,
-    email: string,
-    password: string
-  ) => {
-    e.preventDefault();
-    console.log("logged in");
-  };
+  const { handleRegisterSubmit, handleLoginSubmit } = useContext(AuthContext);
 
   return (
     <div>

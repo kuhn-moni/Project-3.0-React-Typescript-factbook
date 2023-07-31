@@ -4,12 +4,17 @@ import {
   createUserWithEmailAndPassword,
   onAuthStateChanged,
   signOut,
+  signInWithEmailAndPassword,
 } from "firebase/auth";
 import { auth } from "../firebase";
 
 interface ContextType {
   user: User | "No provider" | null;
-  login: () => void;
+  handleLoginSubmit: (
+    e: FormEvent<HTMLFormElement>,
+    email: string,
+    password: string
+  ) => void;
   logout: () => void;
   handleRegisterSubmit: (
     e: FormEvent<HTMLFormElement>,
@@ -20,7 +25,7 @@ interface ContextType {
 
 const defaultValue: ContextType = {
   user: "No provider",
-  login: () => {
+  handleLoginSubmit: () => {
     throw Error("No provider");
   },
   logout: () => {
@@ -39,10 +44,6 @@ interface Props {
 
 export const AuthContextProvider = (props: Props) => {
   const [user, setUser] = useState<User | null>(null);
-
-  const login = () => {
-    // setUser(true);
-  };
 
   const logout = () => {
     signOut(auth)
@@ -74,6 +75,26 @@ export const AuthContextProvider = (props: Props) => {
       });
   };
 
+  const handleLoginSubmit = (
+    e: FormEvent<HTMLFormElement>,
+    email: string,
+    password: string
+  ) => {
+    e.preventDefault();
+    signInWithEmailAndPassword(auth, email, password)
+      .then((userCredential) => {
+        // Signed in
+        const user = userCredential.user;
+        setUser(user);
+        // ...
+      })
+      .catch((error) => {
+        // const errorCode = error.code;
+        // const errorMessage = error.message;
+        console.log(error);
+      });
+  };
+
   const checkActiveUser = () => {
     onAuthStateChanged(auth, (user) => {
       if (user) {
@@ -95,7 +116,9 @@ export const AuthContextProvider = (props: Props) => {
   }, []);
 
   return (
-    <AuthContext.Provider value={{ user, login, logout, handleRegisterSubmit }}>
+    <AuthContext.Provider
+      value={{ user, handleLoginSubmit, logout, handleRegisterSubmit }}
+    >
       {props.children}
     </AuthContext.Provider>
   );
