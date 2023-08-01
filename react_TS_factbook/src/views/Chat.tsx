@@ -12,13 +12,14 @@ function Chat() {
   const [inputValue, setInputValue] = useState("");
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+
+    const newMessage = {
+      author: user!.email!,
+      date: Date.now(),
+      text: inputValue,
+    };
+    console.log("new message", newMessage);
   };
-  const newMessage = {
-    author: user!.email!,
-    date: Date.now(),
-    text: inputValue,
-  };
-  console.log("new message", newMessage);
   return (
     <div style={containerStyle}>
       <h1>Chat/Forum!</h1>
