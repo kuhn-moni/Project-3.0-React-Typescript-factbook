@@ -15,6 +15,7 @@ import { AuthContext, AuthContextProvider } from "./contexts/AuthContext";
 import Details from "./views/Details";
 import ProtectedLayout from "./views/ProtectedLayout";
 import Login from "./views/Login";
+import Chat from "./views/Chat";
 
 function App() {
   const router = createBrowserRouter(
@@ -28,6 +29,7 @@ function App() {
           }
         >
           <Route path="main" element={<Main />} />
+          <Route path="chat" element={<Chat />} />
         </Route>
         <Route index element={<Home />} />
         <Route path="login" element={<Login />} />
@@ -47,14 +49,17 @@ function App() {
 }
 
 const Root = () => {
-  const { user, login, logout } = useContext(AuthContext);
+  const { user, logout } = useContext(AuthContext);
   return (
     <>
       <nav>
         <Link to="/">Home</Link> | <Link to="/main">Main</Link> |{" "}
         <Link to="/about">About</Link> |{" "}
         {user ? (
-          <button onClick={logout}>Logout</button>
+          <>
+            <button onClick={logout}>Logout</button>
+            <Link to={"/chat"}>Chat</Link>
+          </>
         ) : (
           <Link to={"login"}>Login</Link>
         )}
