@@ -1,5 +1,7 @@
 import { useState, type FormEvent, useContext } from "react";
 import { AuthContext } from "../contexts/AuthContext";
+import { addDoc, collection } from "firebase/firestore";
+import { db } from "../firebase";
 
 function Chat() {
   const containerStyle: React.CSSProperties = {
@@ -10,7 +12,7 @@ function Chat() {
   };
   const { user } = useContext(AuthContext);
   const [inputValue, setInputValue] = useState("");
-  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
     const newMessage = {
@@ -18,13 +20,22 @@ function Chat() {
       date: Date.now(),
       text: inputValue,
     };
-    console.log("new message", newMessage);
+    // console.log("new message", newMessage);
+    try {
+      const docRef = await addDoc(collection(db, "chat"), newMessage);
+      console.log("Document written with ID: ", docRef.id);
+      setInputValue("");
+      alert("message added");
+    } catch (e) {
+      console.log(e);
+    }
   };
+
   return (
     <div style={containerStyle}>
       <h1>Chat/Forum!</h1>
       <div>here will go messages....</div>
-      <form onSubmit={handleSubmit} style={containerStyle}>
+      <form onSubmit={(e) => void handleSubmit(e)} style={containerStyle}>
         <textarea
           placeholder="write a message!"
           value={inputValue}

@@ -1,5 +1,5 @@
 import AuthForm from "../components/AuthForm";
-import { useContext, type FormEvent } from "react";
+import { useContext } from "react";
 import { AuthContext } from "../contexts/AuthContext";
 
 const Login = () => {

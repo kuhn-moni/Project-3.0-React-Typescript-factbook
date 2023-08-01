@@ -3,6 +3,7 @@ import {
   createBrowserRouter,
   createRoutesFromElements,
   Link,
+  NavLink,
   Outlet,
   Route,
   RouterProvider,
@@ -53,8 +54,8 @@ const Root = () => {
   return (
     <>
       <nav>
-        <Link to="/">Home</Link> | <Link to="/main">Main</Link> |{" "}
-        <Link to="/about">About</Link> |{" "}
+        <NavLink to="/">Home</NavLink> | <NavLink to="/main">Main</NavLink> |{" "}
+        <NavLink to="/about">About</NavLink> |{" "}
         {user ? (
           <>
             <Link to={"/chat"}>Chat</Link>
