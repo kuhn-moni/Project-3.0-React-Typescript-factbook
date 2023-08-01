@@ -9,7 +9,7 @@ import {
 import { auth } from "../firebase";
 
 interface ContextType {
-  user: User | "No provider" | null;
+  user: User | null;
   handleLoginSubmit: (
     e: FormEvent<HTMLFormElement>,
     email: string,

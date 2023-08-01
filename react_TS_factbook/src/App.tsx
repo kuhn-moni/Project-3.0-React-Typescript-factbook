@@ -57,8 +57,8 @@ const Root = () => {
         <Link to="/about">About</Link> |{" "}
         {user ? (
           <>
-            <button onClick={logout}>Logout</button>
             <Link to={"/chat"}>Chat</Link>
+            <button onClick={logout}>Logout</button>
           </>
         ) : (
           <Link to={"login"}>Login</Link>
