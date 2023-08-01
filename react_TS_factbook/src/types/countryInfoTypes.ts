@@ -1,5 +1,12 @@
-// export type User = boolean;
+export interface ChatMsg {
+  author: string;
+  date: number;
+  text: string;
+}
 
+export interface ChatMsgWithId extends ChatMsg {
+  id: string;
+}
 export interface CountryResponse {
   Introduction: Introduction;
   Geography: Geography;

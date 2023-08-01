@@ -1,7 +1,8 @@
-import { useState, type FormEvent, useContext } from "react";
+import { useState, type FormEvent, useContext, useEffect } from "react";
 import { AuthContext } from "../contexts/AuthContext";
-import { addDoc, collection } from "firebase/firestore";
+import { addDoc, collection, getDocs } from "firebase/firestore";
 import { db } from "../firebase";
+import { ChatMsg, ChatMsgWithId } from "../types/countryInfoTypes";
 
 function Chat() {
   const containerStyle: React.CSSProperties = {
@@ -12,6 +13,9 @@ function Chat() {
   };
   const { user } = useContext(AuthContext);
   const [inputValue, setInputValue] = useState("");
+  const [existingMessages, setExsistingMessages] = useState<ChatMsgWithId[]>(
+    []
+  );
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
@@ -30,11 +34,47 @@ function Chat() {
       console.log(e);
     }
   };
+  useEffect(() => {
+    const getChatDocs = async () => {
+      const querySnapshot = await getDocs(collection(db, "chat"));
+      console.log("querySnapshot", querySnapshot);
+      const messageArray: ChatMsgWithId[] = [];
+      querySnapshot.forEach((doc) => {
+        // doc.data() is never undefined for query doc snapshots
+        //   console.log(doc.id, " => ", doc.data());
+        const data = doc.data() as ChatMsg;
+        messageArray.push({ id: doc.id, ...data });
+      });
+      setExsistingMessages(messageArray);
+      console.log("messagesArray", messageArray);
+    };
+    getChatDocs().catch((e) => console.log(e));
+  }, []);
 
   return (
     <div style={containerStyle}>
       <h1>Chat/Forum!</h1>
-      <div>here will go messages....</div>
+      <div
+        style={{
+          display: "flex",
+          flexDirection: "column",
+          gap: "1em",
+          overflow: "auto",
+        }}
+      >
+        {existingMessages.map((msg) => {
+          return (
+            <div
+              key={msg.id}
+              style={{ padding: "0 10em ", border: "solid 2px gray" }}
+            >
+              <h5>{msg.author}</h5>
+              <i>{msg.date}</i>
+              <p>{msg.text}</p>
+            </div>
+          );
+        })}
+      </div>
       <form onSubmit={(e) => void handleSubmit(e)} style={containerStyle}>
         <textarea
           placeholder="write a message!"
