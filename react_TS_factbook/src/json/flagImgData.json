@@ -1,0 +1,16 @@
+{
+  "flags": [
+    { "name": "Cambodia", "img": "/src/assets/Flags/CB-flag.jpg" },
+    { "name": "Brunei", "img": "/src/assets/Flags/BX-flag.jpg" },
+    { "name": "China", "img": "/src/assets/Flags/CH-flag.jpg" },
+    { "name": "Indonesia", "img": "/src/assets/Flags/ID-flag.jpg" },
+    { "name": "Japan", "img": "/src/assets/Flags/JA-flag.jpg" },
+    { "name": "North Korea", "img": "/src/assets/Flags/KN-flag.jpg" },
+    { "name": "South Korea", "img": "/src/assets/Flags/KS-flag.jpg" },
+    { "name": "Malaysia", "img": "/src/assets/Flags/MY-flag.jpg" },
+    { "name": "Philippines", "img": "/src/assets/Flags/RP-flag.jpg" },
+    { "name": "Singapore", "img": "/src/assets/Flags/SN-flag.jpg" },
+    { "name": "Taiwan", "img": "/src/assets/Flags/TW-flag.jpg" },
+    { "name": "Vietnam", "img": "/src/assets/Flags/VM-flag.jpg" }
+  ]
+}

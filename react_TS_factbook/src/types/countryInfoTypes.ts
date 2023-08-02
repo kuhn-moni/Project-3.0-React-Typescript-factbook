@@ -1,3 +1,4 @@
+//Chat Interfaces
 export interface ChatMsg {
   author: string;
   date: number;
@@ -7,6 +8,19 @@ export interface ChatMsg {
 export interface ChatMsgWithId extends ChatMsg {
   id: string;
 }
+
+//Flags JSON interface
+export interface FlagsJSON {
+  flags: FlagImgJSONType[];
+}
+
+export interface FlagImgJSONType {
+  img: string;
+  name: string;
+}
+
+//API Response
+
 export interface CountryResponse {
   Introduction: Introduction;
   Geography: Geography;
@@ -20,8 +34,12 @@ export interface CountryResponse {
 
 export interface Introduction {
   Background: Background;
-  Img?: string; //!for embedding flag images into countries
+  Img?: string;
 }
+
+// export interface IntroductionWithFlagImgs extends Introduction {
+//   Img: string;
+// }
 
 export interface Background {
   text: string;

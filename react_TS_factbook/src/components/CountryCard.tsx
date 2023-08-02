@@ -10,6 +10,15 @@ function CountryCard({ country }: CountryCardProps) {
     <>
       <Card style={{ width: "30vw", margin: "10px" }}>
         <Card.Body>
+          <img
+            // variant="top"
+            src={country.Introduction.Img}
+            style={{
+              height: "200px",
+              border: "black solid 1px",
+              width: "auto",
+            }}
+          />
           <Card.Title>
             {
               country.Government?.["Country name"]?.["conventional short form"]

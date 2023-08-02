@@ -1,10 +1,13 @@
 import { ChangeEvent, useEffect, useState } from "react";
-import { CountryResponse } from "../types/countryInfoTypes";
+import { CountryResponse, FlagsJSON } from "../types/countryInfoTypes";
 import CardsGrid from "../components/CardsGrid";
 import { Container, Row } from "react-bootstrap";
+import flagImgData from "../json/flagImgData.json";
 
 const Main = () => {
   const [countriesInfo, setcountriesInfo] = useState<CountryResponse[]>([]);
+  const { flags } = flagImgData as FlagsJSON;
+
   const urlsArray = [
     "https://raw.githubusercontent.com/factbook/factbook.json/master/east-n-southeast-asia/ja.json",
     "https://raw.githubusercontent.com/factbook/factbook.json/master/east-n-southeast-asia/kn.json",
@@ -23,13 +26,33 @@ const Main = () => {
   const fetchAllUrls = async () => {
     try {
       const responses = await Promise.all(urlsArray.map((url) => fetch(url)));
-      // const results = await Promise.all(responses.map((res) => res.json()))
       const results = await Promise.all(responses.map((res) => res.json()));
-      console.log("results :>> ", results);
-      setcountriesInfo(results);
+
+      console.log("results :>> ", countriesInfo);
+      getImagesForFlags(results as CountryResponse[]);
+      // getImagesForFlags(countriesInfo);
     } catch (error) {
       console.log("error :>> ", error);
     }
+  };
+
+  /* 
+  - Loop over all the countries response, then inside THAT loop, loop over the FlagImgJSON Data for the flag location. 
+  - Find the name that matches the same name in the FlagImgJSON
+  - If they match, replace the optional img property in Introduction with the Img Property in our FlagImgJSON Data
+  */
+  const getImagesForFlags = (countriesInfo: CountryResponse[]) => {
+    countriesInfo.forEach((countryAPI) => {
+      flags.forEach((flagJSON) => {
+        if (
+          countryAPI.Government["Country name"]?.["conventional short form"]
+            ?.text === flagJSON.name
+        ) {
+          return (countryAPI.Introduction.Img = flagJSON.img);
+        }
+      });
+    });
+    setcountriesInfo(countriesInfo);
   };
 
   const [searchText, setsearchText] = useState("");
