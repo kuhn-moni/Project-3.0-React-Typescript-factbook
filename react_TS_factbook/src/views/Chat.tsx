@@ -1,6 +1,12 @@
 import { useState, type FormEvent, useContext, useEffect } from "react";
 import { AuthContext } from "../contexts/AuthContext";
-import { addDoc, collection, getDocs } from "firebase/firestore";
+import {
+  addDoc,
+  collection,
+  getDocs,
+  orderBy,
+  query,
+} from "firebase/firestore";
 import { db } from "../firebase";
 import { ChatMsg, ChatMsgWithId } from "../types/countryInfoTypes";
 
@@ -19,7 +25,7 @@ function Chat() {
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
-    const newMessage = {
+    const newMessage: ChatMsg = {
       author: user!.email!,
       date: Date.now(),
       text: inputValue,
@@ -30,13 +36,20 @@ function Chat() {
       console.log("Document written with ID: ", docRef.id);
       setInputValue("");
       alert("message added");
+      const msgToAdd: ChatMsgWithId = {
+        ...newMessage,
+        id: docRef.id,
+      };
+      setExsistingMessages([...existingMessages, msgToAdd]);
     } catch (e) {
       console.log(e);
     }
   };
   useEffect(() => {
     const getChatDocs = async () => {
-      const querySnapshot = await getDocs(collection(db, "chat"));
+      const querySnapshot = await getDocs(
+        query(collection(db, "chat"), orderBy("date"))
+      );
       console.log("querySnapshot", querySnapshot);
       const messageArray: ChatMsgWithId[] = [];
       querySnapshot.forEach((doc) => {
