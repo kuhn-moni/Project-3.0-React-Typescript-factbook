@@ -17,6 +17,7 @@ import Details from "./views/Details";
 import ProtectedLayout from "./views/ProtectedLayout";
 import Login from "./views/Login";
 import Chat from "./views/Chat";
+import DataMaps from "./components/DataMaps";
 
 function App() {
   const router = createBrowserRouter(
@@ -36,6 +37,7 @@ function App() {
         <Route path="login" element={<Login />} />
         <Route path="about" element={<About />} />
         <Route path="main/:name" element={<Details />} />
+        {/* <Route path="map" element={<DataMaps />} /> */}
       </Route>
     )
   );
@@ -64,6 +66,7 @@ const Root = () => {
         ) : (
           <Link to={"login"}>Login</Link>
         )}
+        {/* <NavLink to="/map">Map</NavLink> |{" "} */}
       </nav>
 
       <div>

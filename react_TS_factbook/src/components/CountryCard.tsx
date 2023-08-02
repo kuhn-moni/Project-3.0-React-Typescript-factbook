@@ -16,7 +16,7 @@ function CountryCard({ country }: CountryCardProps) {
             style={{
               height: "200px",
               border: "black solid 1px",
-              width: "auto",
+              width: "300px",
             }}
           />
           <Card.Title>
