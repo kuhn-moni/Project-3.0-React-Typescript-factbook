@@ -17,7 +17,7 @@ import Details from "./views/Details";
 import ProtectedLayout from "./views/ProtectedLayout";
 import Login from "./views/Login";
 import Chat from "./views/Chat";
-import DataMaps from "./components/DataMaps";
+// import DataMaps from "./components/DataMaps";
 
 function App() {
   const router = createBrowserRouter(
@@ -55,7 +55,7 @@ const Root = () => {
   const { user, logout } = useContext(AuthContext);
   return (
     <>
-      <nav>
+      <nav className="navbar navbar-dark bg-dark">
         <NavLink to="/">Home</NavLink> | <NavLink to="/main">Main</NavLink> |{" "}
         <NavLink to="/about">About</NavLink> |{" "}
         {user ? (
