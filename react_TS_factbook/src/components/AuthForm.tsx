@@ -1,4 +1,5 @@
 import { type FormEvent, useState } from "react";
+import { Form } from "react-router-dom";
 
 type Props = {
   title: string;
@@ -13,10 +14,9 @@ const AuthForm = ({ title, handleSubmit }: Props) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   return (
-    <div>
+    <>
       <h1>{title}</h1>
-
-      <form
+      <Form
         onSubmit={(e) => handleSubmit(e, email, password)}
         style={{ display: "flex", flexDirection: "column", gap: "1em" }}
       >
@@ -31,8 +31,8 @@ const AuthForm = ({ title, handleSubmit }: Props) => {
           onChange={(e) => setPassword(e.target.value)}
         />
         <button type="submit">{title}</button>
-      </form>
-    </div>
+      </Form>
+    </>
   );
 };
 

@@ -76,11 +76,10 @@ const Main = () => {
 
   return (
     <>
-      <input type="text" onChange={handleInputChange} />
-
       <div className="container-fluid">
         <div className="row justify-content-center">
           <h1>Countries</h1>
+          <input type="text" onChange={handleInputChange} />
           <Container>
             <Row xs={1} sm={2} md={2} lg={4}>
               <CardsGrid countriesInfo={filteredCountries} />
