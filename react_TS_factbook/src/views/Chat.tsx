@@ -66,7 +66,7 @@ function Chat() {
 
   return (
     <div style={containerStyle}>
-      <h1>Chat/Forum!</h1>
+      <h1>Discourse Forum</h1>
       <div
         style={{
           display: "flex",

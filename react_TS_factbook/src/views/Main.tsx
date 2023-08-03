@@ -62,7 +62,7 @@ const Main = () => {
       .toLowerCase()
       .includes(searchText.toLowerCase());
   });
-  console.log("filteredCountries :>> ", filteredCountries);
+  // console.log("filteredCountries :>> ", filteredCountries);
 
   const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => {
     setsearchText(e.target.value);

@@ -2,8 +2,6 @@ import { useContext } from "react";
 import {
   createBrowserRouter,
   createRoutesFromElements,
-  Link,
-  NavLink,
   Outlet,
   Route,
   RouterProvider,
@@ -17,7 +15,7 @@ import Details from "./views/Details";
 import ProtectedLayout from "./views/ProtectedLayout";
 import Login from "./views/Login";
 import Chat from "./views/Chat";
-// import DataMaps from "./components/DataMaps";
+import { Container, Nav, Navbar } from "react-bootstrap";
 
 function App() {
   const router = createBrowserRouter(
@@ -55,21 +53,32 @@ const Root = () => {
   const { user, logout } = useContext(AuthContext);
   return (
     <>
-      <nav className="navbar navbar-dark bg-dark">
-        <NavLink to="/">Home</NavLink> | <NavLink to="/main">Main</NavLink> |{" "}
-        <NavLink to="/about">About</NavLink> |{" "}
-        {user ? (
-          <>
-            <Link to={"/chat"}>Chat</Link>
-            <button onClick={logout}>Logout</button>
-          </>
-        ) : (
-          <Link to={"login"}>Login</Link>
-        )}
-        {/* <NavLink to="/map">Map</NavLink> |{" "} */}
-      </nav>
+      <Navbar fixed="top" expand="lg" className="bg-body-tertiary">
+        <Container>
+          <Navbar.Toggle aria-controls="basic-navbar-nav" />
+          <Navbar.Collapse id="basic-navbar-nav">
+            <Nav
+              className="me-auto my-2 my-lg-0"
+              style={{ maxHeight: "100px" }}
+              navbarScroll
+            >
+              <Nav.Link href="/">Home</Nav.Link>{" "}
+              <Nav.Link href="main">Main</Nav.Link>{" "}
+              <Nav.Link href="about">About</Nav.Link>{" "}
+              {user ? (
+                <>
+                  <Nav.Link href={"/chat"}>Chat</Nav.Link>
+                  <button onClick={logout}>Logout</button>
+                </>
+              ) : (
+                <Nav.Link href={"login"}>Login</Nav.Link>
+              )}
+            </Nav>
+          </Navbar.Collapse>
+        </Container>
+      </Navbar>
 
-      <div>
+      <div style={{ marginTop: "60px" }}>
         <Outlet />
       </div>
     </>
