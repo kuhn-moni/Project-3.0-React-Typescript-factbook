@@ -13,7 +13,9 @@ function ProtectedLayout({ children }: Props) {
       {user ? (
         children
       ) : (
-        <div>Restricted Content - Please login to view content</div>
+        <div>
+          <h3>Restricted Content - Please login to view content</h3>
+        </div>
       )}
     </>
   );
