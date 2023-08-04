@@ -20,93 +20,121 @@ function CountryCard({ country }: CountryCardProps) {
             }}
           />
           <Card.Title>
-            {
-              country.Government?.["Country name"]?.["conventional short form"]
-                .text
-            }
+            <h2>
+              {
+                country.Government?.["Country name"]?.[
+                  "conventional short form"
+                ].text
+              }
+            </h2>
           </Card.Title>
           <Card.Text>
             <span>
-              Nationality -{" "}
+              <h5>Nationality</h5>
               {country?.["People and Society"]?.Nationality.adjective.text}
             </span>
             <span>
-              Population - {country?.["People and Society"]?.Population.text}{" "}
-            </span>
-            <span>Location - {country.Geography.Location.text}</span>
-            <span>
-              Economic overview - {country?.Economy["Economic overview"]?.text}
+              <h5>Population</h5>
+              {country?.["People and Society"]?.Population.text}{" "}
             </span>
             <span>
-              Real GDP Growth Rate -
-              {
-                country?.Economy["Real GDP growth rate"]?.[
-                  "Real GDP growth rate 2019"
-                ]?.text
-              }
-              {
-                country?.Economy["Real GDP growth rate"]?.[
-                  "Real GDP growth rate 2020"
-                ]?.text
-              }
-              {
-                country?.Economy["Real GDP growth rate"]?.[
-                  "Real GDP growth rate 2021"
-                ]?.text
-              }
+              <h5>Location</h5> {country.Geography.Location.text}
             </span>
             <span>
-              Real GDP per capita -
+              <h5>Economic overview </h5>
+              {country?.Economy["Economic overview"]?.text}
+            </span>
+            <span>
+              <h5>Real GDP Growth Rate</h5>
+              <li>
+                {
+                  country?.Economy["Real GDP growth rate"]?.[
+                    "Real GDP growth rate 2019"
+                  ]?.text
+                }
+              </li>{" "}
+              <li>
+                {
+                  country?.Economy["Real GDP growth rate"]?.[
+                    "Real GDP growth rate 2020"
+                  ]?.text
+                }
+              </li>{" "}
+              <li>
+                {
+                  country?.Economy["Real GDP growth rate"]?.[
+                    "Real GDP growth rate 2021"
+                  ]?.text
+                }
+              </li>
+            </span>
+            <span>
+              <h5>Real GDP per capita</h5>
               {
                 country?.Economy["Real GDP per capita"]?.[
                   "Real GDP per capita 2021"
                 ]?.text
               }
             </span>
-            <span>Industries - {country?.Economy.Industries.text}</span>
             <span>
-              Export - {country?.Economy.Exports["Exports 2021"]?.text} Export
-              Commodities -{country?.Economy["Exports - commodities"]?.text}{" "}
-              Export Partners - {country?.Economy["Exports - partners"]?.text}
+              <h5>Industries</h5>
+              {country?.Economy.Industries.text}
             </span>
             <span>
-              Imports - {country?.Economy.Imports["Imports 2021"]?.text}
-              <br />
-              Import Commodities -
+              <h5>Export</h5> {country?.Economy.Exports["Exports 2021"]?.text}{" "}
+              <h5>Export Commodities</h5>
+              {country?.Economy["Exports - commodities"]?.text}{" "}
+              <h5>Export Partners</h5>
+              {country?.Economy["Exports - partners"]?.text}
+            </span>
+            <span>
+              <h5>Imports</h5> {country?.Economy.Imports["Imports 2021"]?.text}
+              <h5>Import Commodities</h5>
               {country?.Economy["Imports - commodities"]?.text}
               <br />
-              Import Partners - {country?.Economy["Imports - partners"]?.text}
+              <h5>Import Partners</h5>{" "}
+              {country?.Economy["Imports - partners"]?.text}
             </span>
             <span>
-              Military expenditure -
-              {
-                country?.["Military and Security"]?.["Military expenditures"]?.[
-                  "Military Expenditures 2018"
-                ]?.text
-              }
-              {
-                country?.["Military and Security"]?.["Military expenditures"]?.[
-                  "Military Expenditures 2019"
-                ]?.text
-              }
-              {
-                country?.["Military and Security"]?.["Military expenditures"]?.[
-                  "Military Expenditures 2020"
-                ]?.text
-              }
-              {
-                country?.["Military and Security"]?.["Military expenditures"]?.[
-                  "Military Expenditures 2021"
-                ]?.text
-              }
-              {
-                country?.["Military and Security"]?.["Military expenditures"]?.[
-                  "Military Expenditures 2022"
-                ]?.text
-              }
+              <h5>Military expenditure</h5>
+              <li>
+                {
+                  country?.["Military and Security"]?.[
+                    "Military expenditures"
+                  ]?.["Military Expenditures 2018"]?.text
+                }
+              </li>
+              <li>
+                {
+                  country?.["Military and Security"]?.[
+                    "Military expenditures"
+                  ]?.["Military Expenditures 2019"]?.text
+                }
+              </li>
+              <li>
+                {
+                  country?.["Military and Security"]?.[
+                    "Military expenditures"
+                  ]?.["Military Expenditures 2020"]?.text
+                }
+              </li>
+              <li>
+                {
+                  country?.["Military and Security"]?.[
+                    "Military expenditures"
+                  ]?.["Military Expenditures 2021"]?.text
+                }
+              </li>
+              <li>
+                {
+                  country?.["Military and Security"]?.[
+                    "Military expenditures"
+                  ]?.["Military Expenditures 2022"]?.text
+                }
+              </li>
             </span>
             <span>
-              Military inventories and acqusition -
+              <h5>Military inventories and acqusition</h5>
               {
                 country?.["Military and Security"]?.[
                   "Military equipment inventories and acquisitions"
@@ -114,7 +142,7 @@ function CountryCard({ country }: CountryCardProps) {
               }
             </span>
             <span>
-              Transnational disputes -
+              <h5>Transnational disputes</h5>
               {
                 country?.["Transnational Issues"]?.["Disputes - international"]
                   ?.text
