@@ -80,6 +80,7 @@ const Main = () => {
         <div className="row justify-content-center">
           <h1>Countries</h1>
           <input
+            style={{ padding: "10px" }}
             type="text"
             onChange={handleInputChange}
             placeholder="Search here"

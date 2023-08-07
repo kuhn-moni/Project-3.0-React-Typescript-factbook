@@ -3,12 +3,7 @@ function About() {
     <div style={{ padding: "25px" }}>
       <h1>About</h1>
       <hr />
-      <p>
-        Welcome to our website, a dynamic platform dedicated to fostering
-        discourse and providing valuable information about state actors in the
-        Southeast Asian region, with a particular focus on the South China Sea
-        dispute.
-      </p>
+
       <p>
         As a think tank initiative, our primary goal is to promote
         understanding, dialogue, and informed discussions surrounding this
@@ -19,15 +14,7 @@ function About() {
         among nations, the region has become a focal point of international
         relations.
       </p>
-      <p>
-        Our website serves as a hub for individuals, academics, policymakers,
-        and anyone interested in gaining a comprehensive understanding of the
-        South China Sea dispute. We aim to provide a balanced and unbiased
-        platform that encourages open dialogue and the exchange of ideas.
-        Through in-depth analysis, research papers, expert opinions, and curated
-        news articles, we strive to shed light on the historical, legal,
-        economic, and geopolitical aspects of the dispute.
-      </p>{" "}
+
       <p>
         Our team of experts and researchers work diligently to present accurate
         and up-to-date information, ensuring that visitors can access reliable

@@ -6,11 +6,22 @@ const Login = () => {
   const { handleRegisterSubmit, handleLoginSubmit } = useContext(AuthContext);
 
   return (
-    <div>
-      <AuthForm title={"Login"} handleSubmit={handleLoginSubmit} />
-      <hr />
-      <AuthForm title={"Register"} handleSubmit={handleRegisterSubmit} />
-    </div>
+    <>
+      <div className="container-fluid" style={{ width: "100vw" }}>
+        <div
+          style={{
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
+            height: "100vw",
+          }}
+        >
+          <AuthForm title={"Login"} handleSubmit={handleLoginSubmit} />
+          <hr />
+          <AuthForm title={"Register"} handleSubmit={handleRegisterSubmit} />
+        </div>
+      </div>
+    </>
   );
 };
 

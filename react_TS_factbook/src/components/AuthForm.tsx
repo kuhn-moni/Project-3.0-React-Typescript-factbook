@@ -24,11 +24,13 @@ const AuthForm = ({ title, handleSubmit }: Props) => {
           type="email"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
+          placeholder="Email here..."
         />
         <input
           type="password"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
+          placeholder="Password here..."
         />
         <button type="submit">{title}</button>
       </Form>

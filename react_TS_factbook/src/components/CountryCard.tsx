@@ -1,17 +1,23 @@
+import { useState } from "react";
+import { Modal, Button, Card } from "react-bootstrap";
 import { CountryResponse } from "../types/countryInfoTypes";
-import { Card } from "react-bootstrap";
 
 interface CountryCardProps {
   country: CountryResponse;
 }
 
 function CountryCard({ country }: CountryCardProps) {
+  const [showModal, setShowModal] = useState(false);
+
+  const handleModal = () => {
+    setShowModal(!showModal);
+  };
+
   return (
     <>
       <Card style={{ width: "30vw", margin: "10px" }}>
         <Card.Body>
           <img
-            // variant="top"
             src={country.Introduction.Img}
             style={{
               height: "200px",
@@ -29,14 +35,10 @@ function CountryCard({ country }: CountryCardProps) {
             </h2>
           </Card.Title>
           <Card.Text>
-            <span>
-              <h5>Nationality</h5>
-              {country?.["People and Society"]?.Nationality.adjective.text}
-            </span>
-            <span>
-              <h5>Population</h5>
-              {country?.["People and Society"]?.Population.text}{" "}
-            </span>
+            <h5>Nationality</h5>
+            {country?.["People and Society"]?.Nationality.adjective.text}
+            <h5>Population</h5>
+            {country?.["People and Society"]?.Population.text}{" "}
             <span>
               <h5>Location</h5> {country.Geography.Location.text}
             </span>
@@ -143,14 +145,30 @@ function CountryCard({ country }: CountryCardProps) {
             </span>
             <span>
               <h5>Transnational disputes</h5>
-              {
-                country?.["Transnational Issues"]?.["Disputes - international"]
-                  ?.text
-              }
+              <Button variant="primary" onClick={handleModal}>
+                Show Disputes
+              </Button>
             </span>
           </Card.Text>
         </Card.Body>
       </Card>
+
+      <Modal show={showModal} onHide={handleModal} centered>
+        <Modal.Header closeButton>
+          <Modal.Title>Transnational Disputes</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          {
+            country?.["Transnational Issues"]?.["Disputes - international"]
+              ?.text
+          }
+        </Modal.Body>
+        <Modal.Footer>
+          <Button variant="secondary" onClick={handleModal}>
+            Close
+          </Button>
+        </Modal.Footer>
+      </Modal>
     </>
   );
 }
